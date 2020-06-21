@@ -67,3 +67,7 @@ function newChart(url, idCanvas, typeChart) {
 newChart('http://localhost:3002/Barrios', 'myChartBarrios', 'bar');
 newChart('http://localhost:3002/VentavsRenta', 'myChartVenta', 'pie');
 newChart('http://localhost:3002/Renta', 'myChartRenta', 'pie');
+
+newChart('http://localhost:3002/Barrios', 'myChartBarrios2', 'bar');
+newChart('http://localhost:3002/VentavsRenta', 'myChartVenta2', 'pie');
+newChart('http://localhost:3002/Renta', 'myChartRenta2', 'pie');

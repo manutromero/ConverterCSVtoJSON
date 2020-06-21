@@ -1,0 +1,9 @@
+.containerGeneral {
+	display: flex;
+	flex-wrap: wrap;
+}
+.chart-container {
+	position: relative;
+	margin-top: 50px;
+	width: 33%;
+}

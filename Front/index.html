@@ -6,13 +6,32 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-    hola mundo
-    <canvas id="myChartBarrios" width="400" height="150"></canvas>
-    <canvas id="myChartVenta" width="400" height="150"></canvas>
-    <canvas id="myChartRenta" width="400" height="150"></canvas>
+    <div class="containerGeneral">
+        <div class="chart-container">
+            <canvas id="myChartBarrios" width="400" height="300"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChartVenta" width="400" height="300"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChartRenta" width="400" height="300"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChartBarrios2" width="400" height="300"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChartVenta2" width="400" height="300"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="myChartRenta2" width="400" height="300"></canvas>
+        </div>
+
+
+    </div>
 </body>
 <script src="/node_modules/chart.js/dist/Chart.js"></script>
 <script src="./index.js"></script>
