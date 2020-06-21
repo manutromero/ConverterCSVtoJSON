@@ -2,26 +2,7 @@ const express = require('express');
 const port = 3002;
 const bodyParser = require('body-parser');
 const app = express();
-
 const csv = require('csvtojson');
-
-const BarriosPathFile = './ArchivosOriginales/Barrios.csv';
-const VentavsRentaPathFile = './ArchivosOriginales/VentaVSRenta.csv';
-
-let BarriosData = 'Cargando..';
-let VentavsRentaData = 'Cargando..';
-
-csv({})
-	.fromFile(BarriosPathFile)
-	.then((jsonObj) => {
-		BarriosData = jsonObj;
-	});
-
-csv({})
-	.fromFile(VentavsRentaPathFile)
-	.then((jsonObj) => {
-		VentavsRentaData = jsonObj;
-	});
 
 app.use(function (req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');
@@ -32,16 +13,32 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.get('/Barrios', (req, res) => {
-	console.log(`URL: ${req.url}`);
-	res.send(BarriosData);
-});
+function CreatePathWithFileFormatting(urlGet, urlExposed) {
+	let data;
+	csv({})
+		.fromFile(urlGet)
+		.then((jsonObj) => {
+			data = jsonObj;
+		});
 
-app.get('/Ventavsrenta', (req, res) => {
-	console.log(`URL: ${req.url}`);
-	res.send(VentavsRentaData);
-});
+	app.get(urlExposed, (req, res) => {
+		console.log(`URL: ${req.url}`);
+		res.send(data);
+	});
+}
 
+CreatePathWithFileFormatting(
+	'./ArchivosOriginales/VentaVSRenta.csv',
+	'/Ventavsrenta'
+);
+CreatePathWithFileFormatting(
+	'./ArchivosOriginales/Barrios.csv',
+	'/Barrios'
+);
+CreatePathWithFileFormatting(
+	'./ArchivosOriginales/Renta.csv',
+	'/Renta'
+);
 // Start the server
 const server = app.listen(port, (error) => {
 	if (error) return console.log(`Error: ${error}`);
