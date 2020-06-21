@@ -7,3 +7,11 @@
 	margin-top: 50px;
 	width: 33%;
 }
+.chart-container:nth-child(1),
+.chart-container:nth-child(2),
+.chart-container:nth-child(3) {
+	margin-top: 0px;
+}
+.title {
+	text-align: center;
+}

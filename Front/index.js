@@ -14,7 +14,7 @@ function getData(url) {
 	});
 }
 
-function newChart(url, idCanvas, typeChart) {
+function newChart(url, idCanvas, typeChart, LabelChart) {
 	getData(url)
 		.then((response) => {
 			var ctx = document.getElementById(idCanvas);
@@ -24,7 +24,7 @@ function newChart(url, idCanvas, typeChart) {
 					labels: Object.keys(response[0]),
 					datasets: [
 						{
-							label: '# Consultas por barrio',
+							label: LabelChart,
 							data: Object.values(response[0]),
 							backgroundColor: [
 								'rgba(255, 99, 132, 0.2)',
@@ -64,9 +64,24 @@ function newChart(url, idCanvas, typeChart) {
 		});
 }
 
-newChart('http://localhost:3002/Barrios', 'myChartBarrios', 'bar');
-newChart('http://localhost:3002/VentavsRenta', 'myChartVenta', 'pie');
-newChart('http://localhost:3002/Renta', 'myChartRenta', 'pie');
+newChart(
+	'http://localhost:3002/Barrios',
+	'myChartBarrios',
+	'bar',
+	'# Consultas por barrio'
+);
+newChart(
+	'http://localhost:3002/VentavsRenta',
+	'myChartVenta',
+	'bar',
+	'¿Cual es mas rentable?'
+);
+newChart(
+	'http://localhost:3002/Renta',
+	'myChartRenta',
+	'pie',
+	'# Consultas por barrio'
+);
 
 newChart('http://localhost:3002/Barrios', 'myChartBarrios2', 'bar');
 newChart('http://localhost:3002/VentavsRenta', 'myChartVenta2', 'pie');
