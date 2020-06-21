@@ -5,13 +5,22 @@ const app = express();
 
 const csv = require('csvtojson');
 
-const csvFilePath = './ArchivosOriginales/DataTest.csv';
+const BarriosPathFile = './ArchivosOriginales/Barrios.csv';
+const VentavsRentaPathFile = './ArchivosOriginales/VentaVSRenta.csv';
 
-let data = 'Cargando..';
+let BarriosData = 'Cargando..';
+let VentavsRentaData = 'Cargando..';
+
 csv({})
-	.fromFile(csvFilePath)
+	.fromFile(BarriosPathFile)
 	.then((jsonObj) => {
-		data = jsonObj;
+		BarriosData = jsonObj;
+	});
+
+csv({})
+	.fromFile(VentavsRentaPathFile)
+	.then((jsonObj) => {
+		VentavsRentaData = jsonObj;
 	});
 
 app.use(function (req, res, next) {
@@ -23,9 +32,14 @@ app.use(function (req, res, next) {
 	next();
 });
 
-app.get('/Data', (req, res) => {
+app.get('/Barrios', (req, res) => {
 	console.log(`URL: ${req.url}`);
-	res.send(data);
+	res.send(BarriosData);
+});
+
+app.get('/Ventavsrenta', (req, res) => {
+	console.log(`URL: ${req.url}`);
+	res.send(VentavsRentaData);
 });
 
 // Start the server
