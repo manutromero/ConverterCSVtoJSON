@@ -144,7 +144,6 @@ getData('http://localhost:3002/CrecimientoRedes')
 		var newArrayDataINS = [];
 		var newMoths = [];
 		response.forEach((element) => {
-			console.log('element', element);
 			newArrayDataFB.push(element.FACEBOOK);
 			newArrayDataINS.push(element.INSTAGRAM);
 			newMoths.push(element.MES);
@@ -203,6 +202,149 @@ getData('http://localhost:3002/CrecimientoRedes')
 				title: {
 					display: true,
 					text: 'Crecimiento ANUAL redes sociales',
+				},
+			},
+		});
+	})
+	.catch(() => {
+		console.log('algo salio mal');
+	});
+getData('http://localhost:3002/Totalvisitas')
+	.then((response) => {
+		var newArrayDataVenta = [];
+		var newArrayDataRenta = [];
+		var newMoths = [];
+		response.forEach((element) => {
+			newArrayDataVenta.push(element.VENTA);
+			newArrayDataRenta.push(element.RENTA);
+			newMoths.push(element.MES);
+		});
+		var ctx = document.getElementById('myCharTotalVisitas');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: newMoths,
+				datasets: [
+					{
+						label: 'VENTA',
+						data: newArrayDataVenta,
+						backgroundColor: [
+							'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(255, 159, 64, 0.2)',
+						],
+						borderColor: [
+							'rgba(255, 99, 132, 1)',
+							'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							'rgba(153, 102, 255, 1)',
+							'rgba(255, 159, 64, 1)',
+						],
+						borderWidth: 2,
+					},
+					{
+						label: 'RENTA',
+						data: newArrayDataRenta,
+						backgroundColor: [
+							'rgba(47,115,206,0.42)',
+							'rgba(47,115,206,0.42)',
+							'rgba(47,115,206,0.42)',
+							'rgba(47,115,206,0.42)',
+							'rgba(47,115,206,0.42)',
+							'rgba(47,115,206,0.42)',
+						],
+						borderColor: [
+							'rgba(47,115,133,0.42)',
+							'rgba(47,115,133,0.42)',
+							'rgba(47,115,133,0.42)',
+							'rgba(47,115,133,0.42)',
+							'rgba(47,115,133,0.42)',
+							'rgba(47,115,133,0.42)',
+						],
+						borderWidth: 2,
+					},
+				],
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'Seguimiento Visitas A inmuebles',
+				},
+			},
+		});
+	})
+	.catch(() => {
+		console.log('algo salio mal');
+	});
+
+getData('http://localhost:3002/InVsCierre')
+	.then((response) => {
+		var newArrayDataNewClient = [];
+		var newArrayDataNewUser = [];
+		var newMoths = [];
+		response.forEach((element) => {
+			newArrayDataNewClient.push(element.CLIENTES_INTERESADOS);
+			newArrayDataNewUser.push(element.NUEVOS_USUARIOS);
+			newMoths.push(element.MES);
+		});
+		var ctx = document.getElementById('myCharInVsCierre');
+		var myChart = new Chart(ctx, {
+			type: 'line',
+			data: {
+				labels: newMoths,
+				datasets: [
+					{
+						label: 'CLIENTES INTERESADOS',
+						data: newArrayDataNewClient,
+						backgroundColor: [
+							'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(255, 159, 64, 0.2)',
+						],
+						borderColor: [
+							'rgba(255, 99, 132, 1)',
+							'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							'rgba(153, 102, 255, 1)',
+							'rgba(255, 159, 64, 1)',
+						],
+						borderWidth: 2,
+					},
+					{
+						label: 'NUEVOS USUARIOS',
+						data: newArrayDataNewUser,
+						backgroundColor: [
+							'rgba(47,115,206,0.42)',
+							'rgba(47,115,206,0.42)',
+							'rgba(47,115,206,0.42)',
+							'rgba(47,115,206,0.42)',
+							'rgba(47,115,206,0.42)',
+							'rgba(47,115,206,0.42)',
+						],
+						borderColor: [
+							'rgba(47,115,133,0.42)',
+							'rgba(47,115,133,0.42)',
+							'rgba(47,115,133,0.42)',
+							'rgba(47,115,133,0.42)',
+							'rgba(47,115,133,0.42)',
+							'rgba(47,115,133,0.42)',
+						],
+						borderWidth: 2,
+					},
+				],
+			},
+			options: {
+				title: {
+					display: true,
+					text: 'CLIENTES INTERESADOS VS CLIENTE NUEVOS',
 				},
 			},
 		});

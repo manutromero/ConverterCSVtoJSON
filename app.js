@@ -39,6 +39,14 @@ CreatePathWithFileFormatting(
 	'./ArchivosOriginales/CRECIMIENTO_MENSUAL_REDES.csv',
 	'/Redes'
 );
+CreatePathWithFileFormatting(
+	'./ArchivosOriginales/INTERESADOSVSCIERRE.csv',
+	'/InVsCierre'
+);
+CreatePathWithFileFormatting(
+	'./ArchivosOriginales/TOTALVISITAS.csv',
+	'/Totalvisitas'
+);
 
 // Start the server
 const server = app.listen(port, (error) => {
