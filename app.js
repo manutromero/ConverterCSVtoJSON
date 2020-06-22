@@ -28,20 +28,20 @@ function CreatePathWithFileFormatting(urlGet, urlExposed) {
 }
 
 CreatePathWithFileFormatting(
-	'./ArchivosOriginales/VentaVSRenta.csv',
-	'/Ventavsrenta'
-);
-CreatePathWithFileFormatting(
-	'./ArchivosOriginales/Barrios.csv',
+	'./ArchivosOriginales/BARRIOS_MAS_POPULARES.csv',
 	'/Barrios'
 );
 CreatePathWithFileFormatting(
-	'./ArchivosOriginales/Renta.csv',
-	'/Renta'
+	'./ArchivosOriginales/CRECIMIENTO_SEGUIDORES_REDES.csv',
+	'/CrecimientoRedes'
 );
+CreatePathWithFileFormatting(
+	'./ArchivosOriginales/CRECIMIENTO_MENSUAL_REDES.csv',
+	'/Redes'
+);
+
 // Start the server
 const server = app.listen(port, (error) => {
 	if (error) return console.log(`Error: ${error}`);
-
 	console.log(`Server listening on port ${server.address().port}`);
 });
